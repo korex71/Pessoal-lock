@@ -1,0 +1,37 @@
+body{
+  user-select: none;
+}
+.enc{
+  cursor: pointer;
+}
+
+.show{
+  display: block;
+}
+.nav-item a{
+  cursor: pointer;
+}
+
+.form-group > input {
+  margin-bottom: 2pt;
+}
+
+.svg-icon {
+  width: 1em;
+  height: 1em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: #4691f6;
+}
+
+.svg-icon circle {
+  stroke: #4691f6;
+  stroke-width: 1;
+}
+
+.search{
+  height: 37px;
+}

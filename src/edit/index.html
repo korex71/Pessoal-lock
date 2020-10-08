@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container-fluid mt-2">
+    <p class="text-center text-dark pt-2" style="font-size:2em;">Editar conta</p>
+    <div class="form-group">
+      <input type="text" name="plataform" id="form-platform" class="form-control mt-1" placeholder="Plataforma">
+      <input type="text" name="user" id="form-user" class="form-control mt-1" placeholder="Usuário">
+      <input type="email" name="email" id="form-email" class="form-control mt-1" placeholder="Email">
+      <input type="password" name="password" id="form-password" class="form-control mt-1" placeholder="Senha">
+      <textarea name="textarea" class="w-100" id="form-more" cols="20" rows="10" placeholder="Mais informações como perguntas de segurança, chaves secretas, etc."></textarea>
+      <button class="btn btn-primary w-100" id="sendInfo">Enviar</button>
+    </div>
+  </div>
+  <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+  <script>
+    function capitalize(s) {
+      if (typeof s !== 'string') return ''
+      return s.charAt(0).toUpperCase() + s.slice(1)
+    }
+    require('electron').ipcRenderer.on('data', (event, info) => {
+      console.log(info)
+      document.querySelector('#form-platform').value = capitalize(info.platform)
+      document.querySelector('#form-user').value = info.user
+      document.querySelector('#form-email').value = info.email
+      document.querySelector('#form-password').value = info.password
+      document.querySelector('#form-more').value = info.textarea
+      document.queryID = info._id
+    })
+
+    document.querySelector('#sendInfo').onclick = () => {
+     const platform = document.querySelector('#form-platform').value
+     const user = document.querySelector('#form-user').value
+     const email = document.querySelector('#form-email').value
+     const password = document.querySelector('#form-password').value
+     const textarea = document.querySelector('#form-more').value
+      let info = {
+        _id: document.queryID,
+        platform,
+        user,
+        email,
+        password,
+        textarea
+      }
+      require('electron').ipcRenderer.send('edit', info)
+      window.close()
+    }
+  </script>
+</body>
+</html>

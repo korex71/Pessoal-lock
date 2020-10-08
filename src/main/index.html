@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <ul class="nav nav-tabs" id="navId">
+    <li class="nav-item">
+      <a to="#tab1Id" class="nav-link active">Lista de contas</a>
+    </li>
+    <li class="nav-item">
+      <a to="#tab2Id" class="nav-link">+</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" to="#tab3Id">?</a>
+    </li>
+  </ul>
+  
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="tab1Id" role="tabpanel">
+      <div class="container-fluid">
+        <div id="search-content" class="w-100 mt-1">
+          <div class="row">
+            <div class="col">
+              <input type="text" class="search w-100" placeholder="Pesquise pela plataforma." id="search">
+            </div>
+          </div>
+        </div>
+
+        <div id="accounts-content" class="100vh mt-2">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Plataforma</th>
+                <th>Usuário</th>
+                <th>Email</th>
+                <th>Senha</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="accounts-body">
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="tab-pane fade" id="tab2Id" role="tabpanel">
+      <div class="container-fluid mt-2">
+        <p class="text-center text-dark pt-2" style="font-size:2em;">Adicionar conta</p>
+        <div class="form-group">
+          <input type="text" name="plataform" id="form-platform" class="form-control" placeholder="Plataforma">
+          <input type="text" name="user" id="form-user" class="form-control" placeholder="Usuário">
+          <input type="email" name="email" id="form-email" class="form-control" placeholder="Email">
+          <input type="password" name="password" id="form-password" class="form-control" placeholder="Senha">
+          <textarea name="textarea" class="w-100" id="form-more" cols="20" rows="10" placeholder="Mais informações como perguntas de segurança, chaves secretas, etc."></textarea>
+          <button class="btn btn-primary w-100" id="sendInfo">Enviar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="tab3Id" role="tabpanel">
+      <div class="container-fluid mt-2">
+        <ul class="list-group">
+          <li class="list-group-item">* Todas as senhas são encriptadas e salvas.</li>
+          <li class="list-group-item">* Para aparecer na tela a senha precisa ser desencriptada</li>
+          <li class="list-group-item">* O programa pode ser levado para qualquer lugar, basta baixar a versão "portable", veja em <a href="#" target="_blank">Portable version</a></li>
+          <li class="list-group-item">* As senhas são encriptadas com base na encriptação da sua MASTER. por este motivo a master, uma vez gerada, é imutável e essêncial para todo o processo.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="./render.js"></script>
+</body>
+</html>
